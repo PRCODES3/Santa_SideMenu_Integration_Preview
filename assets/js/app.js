@@ -1,15 +1,12 @@
 
 function toggleMenu(){
-  const menu=document.getElementById('side-menu');
-  const content=document.getElementById('content');
-  if(menu.classList.contains('open')){
-    menu.classList.remove('open');
-    content.classList.remove('shift');
-  } else {
-    menu.classList.add('open');
-    content.classList.add('shift');
-  }
+  const m=document.getElementById('side-menu');
+  const c=document.getElementById('content');
+  m.classList.toggle('open');
+  c.classList.toggle('shift');
 }
-function loadScreen(name){
-  document.getElementById('screen').innerHTML = `<h2>${name} Screen</h2>`;
+function loadScreen(path){
+  fetch(path).then(r=>r.text()).then(html=>{
+    document.getElementById('screen').innerHTML=html;
+  });
 }
